@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+//programa que dá a tabuada de 20 do numero digitado
 int main(void)
 {
   int numero;
