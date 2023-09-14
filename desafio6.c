@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+//programa que organiza os numeros digitados em ordem crescente
 int main(void)
 {
   printf("Digite 3 numeros para organizalos em ordem crescente\n");
