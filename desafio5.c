@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+//calculadora de fatorial
 int main(void)
 {
   printf("Digite um numero para achar o fatorial\n");
