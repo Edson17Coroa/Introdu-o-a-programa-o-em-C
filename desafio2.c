@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+//programa que imprime a soma de todos os números de 1 até 100
 int main(void)
 {
   int soma = 1;
