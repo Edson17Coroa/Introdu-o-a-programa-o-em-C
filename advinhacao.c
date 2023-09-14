@@ -3,10 +3,10 @@
 #include <time.h>
 
 //Está tudo em letras maiusculas porque é uma das convenções da linguagem c e sempre ue migrar para outra linguagem devo procurar as suas convenções e lugares para abrir ou fechar chavetas.
-#define dificil 5
-#define media 10
-#define facil 20
-#define pontosmax 1000
+#define DIFICIL 5
+#define MEDIA 10
+#define FACIL 20
+#define PONTOSMAX 1000
 int main(void)
 {
   int iniciar = 1;
@@ -35,32 +35,34 @@ int main(void)
     int dificuldade;
     scanf("%d", &dificuldade);
     int totaltentativas;
+    //criando uma condição para a escolha da dificuldade que player fizer segundo o numero digitado
+    //o numero de tentativas aumenta segundo o numero digitado pelo player na escolha da dificuldade
     switch (dificuldade)
     {
      case 1: 
-            totaltentativas = facil;
+            totaltentativas = FACIL;
             break;
      
      case 2: 
-            totaltentativas = media;
+            totaltentativas = MEDIA;
             break;
      
      default:
-            totaltentativas = dificil;
+            totaltentativas = DIFICIL;
             break;
     }
     int acertou = 0;
-    double pontos = pontosmax;
+    double pontos = PONTOSMAX;
     int chute;
     int chuteanterior;
     //comecando um loop
     for (int i = 1; i <= totaltentativas; i++)
     {
-      //chute e a variavel que guarda o numero digitado
+      //pedindo um chute do player e adicionando o numero a variavel chute
       printf("%dª tentativa\n", i);
       printf("Advinhe o numero\n");
       scanf("%d", &chute);
-      
+      //condição que impede que o player digite o mesmo numero vezes seguidas
       if (chuteanterior == chute)
       {
         printf("Voce ja digitou esse numero, escolha outro\n");
@@ -68,6 +70,7 @@ int main(void)
       }
       else
       {
+        //condição que impede que o player digite um numero negativo
         if (chute < 0)
         {
           printf("Você não pode digitar um numero negativo\n");
@@ -77,6 +80,7 @@ int main(void)
         printf("Você digitou o número %d\n",chute);
         //variavel que define se o player acertou na advinhacao
         acertou = chute == numerosecreto;
+        //criando condições que avisam se o player acertou ou errou o chute e dão uma dica da posição do numero secreto
         //variavel que define que o chute e maior que o numero secreto
         int maior = chute > numerosecreto;
         if (acertou)
@@ -91,11 +95,15 @@ int main(void)
         {
           printf("o numero que voce digitou e menor que o numero secreto\n");
         }
+        //calculando os pontos restantes do player e 
+        //adicionando a função abs a conta para converter os valores da subtração em numeros positivos
         double pontosperdidos = abs(chute - numerosecreto)/2.0;
-        pontos = pontosmax - pontosperdidos;
+        pontos = PONTOSMAX - pontosperdidos;
       }
+      //variavel que guarda o chute anterior do player
       chuteanterior = chute;
     }
+    //condições que analizam se o player venceu ou perdeu o jogo e mostram a mensagem adequada a situação
     if (acertou)
     {
       printf("Voce acertou\n");
@@ -105,6 +113,7 @@ int main(void)
     {
       printf("Parabens, voce perdeu miseravelmente!!\n Pressione (1) para tentar novamente e (0) para terminar\n");
     }
+    //dando a escolha de jogar novamente após o termino da partida
     scanf("%d", &iniciar);
     if (!iniciar)
     {
